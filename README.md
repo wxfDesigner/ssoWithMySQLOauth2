@@ -1,6 +1,6 @@
 # ssoWithMySQL
 
-Spring security oauth2 with mysql , your favorite sso frame , please execute as below sql before starting .
+Spring security oauth2 with mysql , your favorite sso frame , please execute sql before starting as below :
 
 /*
  Navicat Premium Data Transfer

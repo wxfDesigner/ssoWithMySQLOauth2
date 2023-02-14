@@ -27,12 +27,5 @@ public class Application {
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(Application.class).web(false).run(args);
 		logger.info("console server started successfully");
-		synchronized (Application.class) {
-			try {
-				Application.class.wait();
-			} catch (InterruptedException e) {
-				logger.error("fail to started console server", e);
-			}
-		}
 	}
 }

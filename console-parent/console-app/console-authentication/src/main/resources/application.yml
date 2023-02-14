@@ -1,0 +1,54 @@
+dubbo:
+  protocol:
+    port: 20880
+    name: dubbo
+  application:
+    name: console-authentication-app
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    timeout: 30000
+  packageName: com.tdh.gps.console
+
+server:
+  port: 8080
+  session:
+   timeout: 300
+   
+sso:
+ security:
+  oauth2:
+   storeType: jwt
+  jwt:
+   signingKey: awbeci
+   certificatePassword: rewq43214@$%
+   
+spring:
+# MySQL configuration
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    initial-size: 3
+    jdbc-interceptors: ConnectionState;SlowQueryReport(threshold=50)
+    max-idle: 5
+    max-wait: 10000
+    min-idle: 2
+    password: 123456
+    time-between-eviction-runs-millis: 18800
+    url: jdbc:mysql://127.0.0.1:3306/sso?characterEncoding=UTF-8
+    username: root
+    validation-query: SELECT 1
+# redis configuration
+  redis:
+    host: 127.0.0.1
+    password: 
+    port: 6379
+    timeout: 10000
+    pool:
+      max-active: 100
+      max-idle: 10
+      min-idle: 1
+      max-wait: 30000
+
+
+logging:
+  level:
+    root: debug   

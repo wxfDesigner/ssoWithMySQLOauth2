@@ -26,9 +26,6 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 //@EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
 public class SsoWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
-//	@Autowired
-//	private BeanInitConfig beanInitConfig;
-
 	@Autowired
 	private UserDetailsService userDetailsService;
 
@@ -61,33 +58,6 @@ public class SsoWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
-
-//	@Bean
-//	@Autowired
-//	public TokenStore tokenStore(DataSource dataSource) {
-//		return new JdbcTokenStore(dataSource);
-//	}
-
-//	/**
-//	 * 实例化一个TokenStore，他的实现是InMemoryTokenStore，会把OAuth授权的token保存在内存中
-//	 * 
-//	 * @return
-//	 */
-//	@Bean
-//	public TokenStore tokenStore() {
-//		return new InMemoryTokenStore();
-//	}
-
-//	@Bean
-//	@Autowired
-//	public OauthUserApprovalHandler userApprovalHandler(TokenStore tokenStore,ClientDetailsService clientDetailsService) {
-//		OauthUserApprovalHandler handler = new OauthUserApprovalHandler();
-//		handler.setTokenStore(tokenStore);
-//		handler.setRequestFactory(new DefaultOAuth2RequestFactory(clientDetailsService));
-//		handler.setClientDetailsService(clientDetailsService);
-//		handler.setOauthService(beanInitConfig.getOauthService());
-//		return handler;
-//	}
 
 	@Bean
 	public ApprovalStore approvalStore(TokenStore tokenStore) throws Exception {

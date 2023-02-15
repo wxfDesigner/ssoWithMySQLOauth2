@@ -11,8 +11,6 @@ dubbo:
 
 server:
   port: 8889 
-  session:
-   timeout: 300
 
 security:
 #  oauth2:
@@ -54,19 +52,48 @@ sso:
   jwt:
    signingKey: awbeci
    
+spring: 
+  profiles:
+    active: dev
+    #includ中,nacos的配置文件对应 starex-mysql, starex-swagger2
+    include: 
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: console-web
+  cloud:
+    nacos:
+      discovery: 
+        # 服务注册地址
+        server-addr: localhost:8848
+        # 注册命名空间
+        namespace: ad67d78d-1978-45c5-9c1b-1acba7229190
+        metadata: 
+          preserved.heart.beat.interval: 3000
+          preserved.heart.beat.timeout: 6000
+          preserved.ip.delete.timeout: 6000
+      config:
+        # 配置中心地址
+        server-addr: localhost:8848
+        # 服务命名空间
+        namespace: ad67d78d-1978-45c5-9c1b-1acba7229190
+        # 配置文件格式
+        file-extension: yaml
+        prefix: console
 # redis configuration
-spring:
-  redis: 
+  redis:
+    database: 0
     host: 127.0.0.1
     password: 
     port: 6379
     timeout: 10000
-    pool:
-      max-active: 100
-      max-idle: 10
-      min-idle: 1
-      max-wait: 30000
-   
+    jedis:
+      pool:
+        max-active: 100
+        max-idle: 10
+        min-idle: 1
+        max-wait: 30000
+#log configuration   
 logging:
   level:
     root: info

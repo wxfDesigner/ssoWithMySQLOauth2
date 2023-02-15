@@ -2,6 +2,7 @@ package com.tdh.gps.console.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -18,13 +19,13 @@ import org.springframework.context.annotation.ComponentScan;
  *
  */
 @SpringBootApplication
-@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class,MongoAutoConfiguration.class })
+@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class, MongoAutoConfiguration.class })
 @ComponentScan(basePackages = { "com.tdh.gps.console.*" })
 public class Application {
 	static Logger logger = LoggerFactory.getLogger(Application.class);
 
 	public static void main(String[] args) {
-		new SpringApplicationBuilder(Application.class).web(true).run(args);
+		new SpringApplicationBuilder(Application.class).web(WebApplicationType.SERVLET).run(args);
 		logger.info("console web started successfully");
 	}
 }

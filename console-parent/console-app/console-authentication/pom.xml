@@ -85,7 +85,7 @@
 		<dependency>
 			<groupId>com.github.sgroschupf</groupId>
 			<artifactId>zkclient</artifactId>
-			<exclusions>
+			<!-- <exclusions>
 				<exclusion>
 					<artifactId>slf4j-api</artifactId>
 					<groupId>org.slf4j</groupId>
@@ -98,7 +98,7 @@
 					<artifactId>slf4j-log4j12</artifactId>
 					<groupId>org.slf4j</groupId>
 				</exclusion>
-			</exclusions>
+			</exclusions> -->
 		</dependency>
 		<!-- spring -->
 		<dependency>

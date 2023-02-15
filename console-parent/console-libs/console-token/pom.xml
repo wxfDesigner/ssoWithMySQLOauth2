@@ -65,5 +65,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-redis</artifactId>
 		</dependency>
+		<!-- tomcat -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+  			<artifactId>tomcat-embed-core</artifactId>
+		</dependency>
 	</dependencies>
 </project>

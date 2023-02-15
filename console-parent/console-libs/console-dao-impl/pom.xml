@@ -15,7 +15,20 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<workspace.root>${project.basedir}/../../</workspace.root>
+		<springboot.server.version>1.5.10.RELEASE</springboot.server.version>
 	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<!-- springboot -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${springboot.server.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>com.tdh.gps.console</groupId>

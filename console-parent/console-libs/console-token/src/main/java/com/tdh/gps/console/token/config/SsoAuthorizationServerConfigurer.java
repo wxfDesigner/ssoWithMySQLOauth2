@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -49,6 +51,11 @@ public class SsoAuthorizationServerConfigurer extends AuthorizationServerConfigu
 	@Qualifier("authenticationManagerBean")
 	private AuthenticationManager authenticationManager;
 
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
 //	MongoDB DataSource begin
 
 //	@Autowired
@@ -70,7 +77,7 @@ public class SsoAuthorizationServerConfigurer extends AuthorizationServerConfigu
 //	MySQL DataSource begin
 
 	@Autowired
-	@Qualifier("dataSource")
+//	@Qualifier("dataSource")
 	private DataSource dataSource;
 
 	@Autowired
@@ -81,7 +88,7 @@ public class SsoAuthorizationServerConfigurer extends AuthorizationServerConfigu
 		return new RedisTokenStore(redisConnectionFactory);
 	}
 
-	@Bean
+	@Bean("jdbcClientDetailsService")
 	public ClientDetailsService clientDetailsService() {
 		return new JdbcClientDetailsService(dataSource);
 	}
@@ -112,8 +119,8 @@ public class SsoAuthorizationServerConfigurer extends AuthorizationServerConfigu
 //		clients.inMemory().withClient("my-trusted-client")// 客户端ID
 //				.authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
 //				.authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT").scopes("read", "write", "trust")// 授权用户的操作权限
-//				.secret("secret")// 密码
-//				.accessTokenValiditySeconds(1800).refreshTokenValiditySeconds(3000);// token有效期为1800秒
+//				.secret(passwordEncoder().encode("secret"))// 密码
+//				.accessTokenValiditySeconds(1800).refreshTokenValiditySeconds(3000)// token有效期为1800秒
 //				.resourceIds("console_web_rest_api", "my_rest_api");
 	}
 

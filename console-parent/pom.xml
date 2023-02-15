@@ -20,20 +20,46 @@
 		<spring.redis.version>1.7.2.RELEASE</spring.redis.version>
 		<console.project.version>0.0.1-SNAPSHOT</console.project.version>
 		<gson.version>2.8.5</gson.version>
+		
+		<!-- springboot begin -->
 		<!-- <springboot.version>1.5.0.RELEASE</springboot.version> -->
 		<!-- <springboot.version>1.5.10.RELEASE</springboot.version> -->
-		<springboot.version>1.3.7.RELEASE</springboot.version>
+		<!-- <springboot.version>1.3.7.RELEASE</springboot.version> source-->
+		<!-- <springboot.version>2.1.6.RELEASE</springboot.version> -->
+		<springboot.version>2.3.12.RELEASE</springboot.version>
+		<!-- springboot end -->
+		
+		<!-- alibabacloud begin -->
+		<!-- <alibabacloud.version>1.5.1.RELEASE</alibabacloud.version> -->
+		<!-- <alibabacloud.version>2.1.2.RELEASE</alibabacloud.version> -->
+		<alibabacloud.version>2.2.7.RELEASE</alibabacloud.version>
+		<!-- alibabacloud end -->
+		
+		<!-- springcloud begin -->
+		<!-- <springcloud.version>Brixton.SR5</springcloud.version> source-->
+		<!-- <springcloud.version>Greenwich.SR1</springcloud.version> -->
+		<springcloud.version>Hoxton.SR12</springcloud.version>
+		<!-- springcloud end -->
+		
+		<spring-security-oauth2.version>2.3.4.RELEASE</spring-security-oauth2.version>
 		<dubbo.version>2.5.3</dubbo.version>
 		<zkclient.version>0.1</zkclient.version>
+		
+		<!-- spring begin -->
 		<spring.version>4.3.14.RELEASE</spring.version>
 		<!-- <spring.version>4.2.7.RELEASE</spring.version> -->
 		<!-- <spring.version>4.3.0.RELEASE</spring.version> -->
+		<!-- spring end -->
+		
 		<jackson.version>2.8.10</jackson.version>
 		<mybatis.version>3.4.5</mybatis.version>
+		<!-- spring.data begin -->
 		<spring.data.keyvalue.version>1.2.10.RELEASE</spring.data.keyvalue.version>
 		<spring.data.commons.version>1.13.10.RELEASE</spring.data.commons.version>
+		<!-- spring.data end -->
 		<junit.version>4.12</junit.version>
-		<mysql.version>5.1.6</mysql.version>
+		<!-- <mysql.version>5.1.6</mysql.version> source-->
+		<mysql.version>8.0.12</mysql.version>
 		<spring.data.version>2.1.2.RELEASE</spring.data.version>
 		<mongodb.version>3.4.3</mongodb.version>
 		<spring.cloud.version>1.4.6.RELEASE</spring.cloud.version>
@@ -45,7 +71,7 @@
 		<spring.data.mongodb.version>1.10.10.RELEASE</spring.data.mongodb.version>
 		<logback.version>1.1.11</logback.version>
 		<spring.security.version>4.0.4.RELEASE</spring.security.version>
-		<spring.security.oauth.version>2.0.14.RELEASE</spring.security.oauth.version>
+		<spring.security.oauth.version>2.0.14.RELEASE</spring.security.oauth.version> 
 	</properties>
 
 	<distributionManagement>
@@ -71,19 +97,9 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
-		<!--
-		<repository>
-			<id>release</id>
-			<name>nexus-repository</name>
-			<url>http://docker-nexus:8081/nexus/content/repositories/releases</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		-->
+		<!-- <repository> <id>release</id> <name>nexus-repository</name> <url>http://docker-nexus:8081/nexus/content/repositories/releases</url> 
+			<releases> <enabled>true</enabled> </releases> <snapshots> <enabled>true</enabled> 
+			</snapshots> </repository> -->
 		<repository>
 			<id>aliyun</id>
 			<name>aliyun-repository</name>
@@ -128,6 +144,7 @@
 	</modules>
 	<dependencyManagement>
 		<dependencies>
+			<!-- project begin -->
 			<dependency>
 				<groupId>com.tdh.gps.console</groupId>
 				<artifactId>console-service-api</artifactId>
@@ -178,28 +195,30 @@
 				<artifactId>dubbo-spring-boot-starter</artifactId>
 				<version>${console.project.version}</version>
 			</dependency>
-			<!-- springboot -->
+			<!-- project end -->
+			
+			<!-- spring begin -->
+			<!-- <dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>${spring.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>  -->
+			<!-- spring end -->
+			
+			<!-- springboot begin -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-parent</artifactId>
+				<artifactId>spring-boot-dependencies</artifactId>
 				<version>${springboot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-jdbc</artifactId>
-				<version>${springboot.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>org.mybatis.spring.boot</groupId>
 				<artifactId>mybatis-spring-boot-starter</artifactId>
 				<version>1.3.1</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-web</artifactId>
-				<version>${springboot.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
@@ -214,206 +233,19 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-data-mongodb</artifactId>
-				<version>${springboot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-autoconfigure</artifactId>
-				<version>${springboot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-configuration-processor</artifactId>
-				<version>${springboot.version}</version>
-				<optional>true</optional>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-velocity</artifactId>
 				<version>${springboot.starter.velocity.version}</version>
 			</dependency>
+			<!-- springboot end -->
+
+			<!-- springcloud begin -->
 			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot</artifactId>
-				<version>${springboot.version}</version>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${springcloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
-			<!--springboot集成dubbo的依赖 -->
-			<!-- <dependency> <groupId>com.ibigsea</groupId> <artifactId>dubbo-spring-boot-starter</artifactId> 
-				<version>1.0-SNAPSHOT</version> </dependency> -->
-			<!-- <dependency> <groupId>com.101tec</groupId> <artifactId>zkclient</artifactId> 
-				<version>0.10</version> </dependency> -->
-			<!-- redis -->
-			<dependency>
-				<groupId>org.springframework.data</groupId>
-				<artifactId>spring-data-redis</artifactId>
-				<version>${spring.redis.version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>org.springframework.data</groupId>
-						<artifactId>spring-data-commons</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.springframework.data</groupId>
-						<artifactId>spring-data-keyvalue</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<!-- mysql -->
-			<dependency>
-				<groupId>mysql</groupId>
-				<artifactId>mysql-connector-java</artifactId>
-				<version>${mysql.version}</version>
-			</dependency>
-			<!-- spring -->
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aop</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aspects</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-expression</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context-support</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<!-- dubbo -->
-			<dependency>
-				<groupId>com.alibaba</groupId>
-				<artifactId>dubbo</artifactId>
-				<version>${dubbo.version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>com.github.sgroschupf</groupId>
-				<artifactId>zkclient</artifactId>
-				<version>${zkclient.version}</version>
-				<exclusions>
-					<exclusion>
-						<artifactId>slf4j-api</artifactId>
-						<groupId>org.slf4j</groupId>
-					</exclusion>
-					<exclusion>
-						<artifactId>log4j</artifactId>
-						<groupId>log4j</groupId>
-					</exclusion>
-					<exclusion>
-						<artifactId>slf4j-log4j12</artifactId>
-						<groupId>org.slf4j</groupId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<!-- jackson -->
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-core</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-annotations</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-			<!-- mybatis -->
-			<dependency>
-				<groupId>org.mybatis</groupId>
-				<artifactId>mybatis</artifactId>
-				<version>${mybatis.version}</version>
-			</dependency>
-			<!-- springData -->
-			<dependency>
-				<groupId>org.springframework.data</groupId>
-				<artifactId>spring-data-commons</artifactId>
-				<version>${spring.data.commons.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.data</groupId>
-				<artifactId>spring-data-keyvalue</artifactId>
-				<version>${spring.data.keyvalue.version}</version>
-			</dependency>
-			<!-- <dependency> <groupId>org.springframework.data</groupId> <artifactId>spring-data-mongodb</artifactId> 
-				<version>${spring.data.mongodb.version}</version> </dependency> -->
-			<!-- junit -->
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<!-- mongodb -->
-			<dependency>
-				<groupId>org.mongodb</groupId>
-				<artifactId>bson</artifactId>
-				<version>${mongodb.version}</version>
-			</dependency>
-			<!-- <dependency> <groupId>org.mongodb</groupId> <artifactId>mongodb-driver</artifactId> 
-				<version>${mongodb.version}</version> </dependency> <dependency> <groupId>org.mongodb</groupId> 
-				<artifactId>mongodb-driver-core</artifactId> <version>${mongodb.version}</version> 
-				</dependency> <dependency> <groupId>org.springframework.data</groupId> <artifactId>spring-data-mongodb</artifactId> 
-				<version>${spring.data.mongodb.version}</version> </dependency> <dependency> 
-				<groupId>org.mongodb</groupId> <artifactId>mongo-java-driver</artifactId> 
-				<version>2.13.3</version> </dependency> -->
-			<!-- json -->
-			<dependency>
-				<groupId>com.google.code.gson</groupId>
-				<artifactId>gson</artifactId>
-				<version>${gson.version}</version>
-			</dependency>
-			<!-- springcloud -->
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-starter-eureka-server</artifactId>
@@ -429,21 +261,131 @@
 				<artifactId>spring-cloud-starter-feign</artifactId>
 				<version>${spring.cloud.version}</version>
 			</dependency>
+			<!-- springcloud end -->
+			
+			<!-- spring-security-oauth2 begin -->
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Brixton.SR5</version>
-				<type>pom</type>
-				<scope>import</scope>
+				<groupId>org.springframework.security.oauth</groupId>
+				<artifactId>spring-security-oauth2</artifactId>
+				<version>${spring-security-oauth2.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>org.springframework.cloud</groupId> <artifactId>spring-cloud-starter-security</artifactId> 
-				<version>${springcloud.starter.security.version}</version> </dependency> 
-				<dependency> <groupId>org.springframework.cloud</groupId> <artifactId>spring-cloud-starter-oauth2</artifactId> 
-				<version>${springcloud.starter.oauth2.version}</version> </dependency> -->
-			<!-- <dependency> <groupId>org.springframework.cloud</groupId> <artifactId>spring-cloud-dependencies</artifactId> 
-				<version>${spring.cloud.version}</version> <type>pom</type> <scope>import</scope> 
-				</dependency> -->
-			<!-- springSecurity -->
+			<!-- spring-security-oauth2 end -->
+			
+			<!-- alibabacloud begin -->
+			<dependency>
+			  <groupId>com.alibaba.cloud</groupId>
+			  <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+			  <version>${alibabacloud.version}</version>
+			  <type>pom</type>
+			  <scope>import</scope>
+			</dependency>
+			<!-- alibabacloud end -->
+			
+			<!-- redis begin -->
+			<!-- <dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-redis</artifactId>
+				<version>${spring.redis.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework.data</groupId>
+						<artifactId>spring-data-commons</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework.data</groupId>
+						<artifactId>spring-data-keyvalue</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency> -->
+			<!-- redis end -->
+			
+			<!-- springData begin -->
+			<!-- <dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-commons</artifactId>
+				<version>${spring.data.commons.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-keyvalue</artifactId>
+				<version>${spring.data.keyvalue.version}</version>
+			</dependency> -->
+			<!-- springData end -->
+			
+			<!-- mysql begin -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+			<!-- mysql end -->
+
+			<!-- dubbo begin -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>${dubbo.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.github.sgroschupf</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>${zkclient.version}</version>
+				<!-- <exclusions>
+					<exclusion>
+						<artifactId>slf4j-api</artifactId>
+						<groupId>org.slf4j</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>log4j</artifactId>
+						<groupId>log4j</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>slf4j-log4j12</artifactId>
+						<groupId>org.slf4j</groupId>
+					</exclusion>
+				</exclusions> -->
+			</dependency>
+			<!-- dubbo end -->
+			<!-- jackson begin -->
+			<!-- <dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency> -->
+			<!-- jackson end -->
+			<!-- mybatis begin -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${mybatis.version}</version>
+			</dependency>
+			<!-- mybatis end -->
+
+			<!-- mongodb begin -->
+			<dependency>
+				<groupId>org.mongodb</groupId>
+				<artifactId>bson</artifactId>
+				<version>${mongodb.version}</version>
+			</dependency>
+			<!-- mongodb end -->
+			
+			<!-- springSecurity begin -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-jwt</artifactId>
@@ -454,44 +396,29 @@
 				<artifactId>spring-security-crypto</artifactId>
 				<version>${spring.security.version}</version>
 			</dependency>
+			<!-- springSecurity end -->
 
-			<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-core</artifactId> 
-				<version>${spring.security.version}</version> </dependency> <dependency> 
-				<groupId>org.springframework.security</groupId> <artifactId>spring-security-web</artifactId> 
-				<version>${spring.security.version}</version> <exclusions> <exclusion> <groupId>org.springframework</groupId> 
-				<artifactId>spring-jdbc</artifactId> </exclusion> </exclusions> </dependency> 
-				<dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-taglibs</artifactId> 
-				<version>${spring.security.version}</version> <exclusions> <exclusion> <groupId>org.springframework</groupId> 
-				<artifactId>spring-jdbc</artifactId> </exclusion> </exclusions> </dependency> 
-				<dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-config</artifactId> 
-				<version>${spring.security.version}</version> </dependency> <dependency> 
-				<groupId>org.springframework.security.oauth</groupId> <artifactId>spring-security-oauth2</artifactId> 
-				<version>${spring.security.oauth.version}</version> </dependency> -->
-			<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-core</artifactId> 
-				<version>${spring.security.version}</version> </dependency> <dependency> 
-				<groupId>org.springframework.security</groupId> <artifactId>spring-security-web</artifactId> 
-				<version>${spring.security.version}</version> </dependency> <dependency> 
-				<groupId>org.springframework.security</groupId> <artifactId>spring-security-config</artifactId> 
-				<version>${spring.security.version}</version> </dependency> <dependency> 
-				<groupId>org.springframework.security</groupId> <artifactId>spring-security-crypto</artifactId> 
-				<version>${spring.security.version}</version> </dependency> <dependency> 
-				<groupId>org.springframework.security</groupId> <artifactId>spring-security-cas</artifactId> 
-				<version>${spring.security.version}</version> </dependency> <dependency> 
-				<groupId>org.springframework.security</groupId> <artifactId>spring-security-ldap</artifactId> 
-				<version>${spring.security.version}</version> </dependency> <dependency> 
-				<groupId>org.springframework.security</groupId> <artifactId>spring-security-test</artifactId> 
-				<version>${spring.security.version}</version> <scope>test</scope> </dependency> -->
-			<!-- logback -->
-			<!-- <dependency> <groupId>ch.qos.logback</groupId> <artifactId>logback-classic</artifactId> 
-				<version>${logback.version}</version> <scope>test</scope> </dependency> <dependency> 
-				<groupId>ch.qos.logback</groupId> <artifactId>logback-core</artifactId> <version>${logback.version}</version> 
-				</dependency> -->
-			<!-- commons -->
+			<!-- common begin -->
 			<dependency>
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>
 				<version>2.6</version>
 			</dependency>
+			<!-- json -->
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>${gson.version}</version>
+			</dependency>
+			<!-- common end -->
+			<!-- junit begin -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- junit end -->
 		</dependencies>
 	</dependencyManagement>
 	<build>

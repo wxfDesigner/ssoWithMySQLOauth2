@@ -20,7 +20,34 @@ sso:
    signingKey: awbeci
    certificatePassword: rewq43214@$%
    
-spring:
+spring: 
+  profiles:
+    active: dev
+    #includ中,nacos的配置文件对应 starex-mysql, starex-swagger2
+    include: 
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: console-authentication
+  cloud:
+    nacos:
+      discovery: 
+        # 服务注册地址
+        server-addr: localhost:8848
+        # 注册命名空间
+        namespace: ad67d78d-1978-45c5-9c1b-1acba7229190
+        metadata: 
+          preserved.heart.beat.interval: 3000
+          preserved.heart.beat.timeout: 6000
+          preserved.ip.delete.timeout: 6000
+      config:
+        # 配置中心地址
+        server-addr: localhost:8848
+        # 服务命名空间
+        namespace: ad67d78d-1978-45c5-9c1b-1acba7229190
+        # 配置文件格式
+        file-extension: yaml
+        prefix: console
 # MySQL configuration
   # 数据库配置
   datasource:

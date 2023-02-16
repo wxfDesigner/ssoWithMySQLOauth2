@@ -21,7 +21,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.approval.TokenStoreUserApprovalHandler;
 import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
-import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
@@ -30,6 +29,7 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+import org.springframework.util.Assert;
 
 /**
  * 
@@ -77,21 +77,23 @@ public class SsoAuthorizationServerConfigurer extends AuthorizationServerConfigu
 //	MySQL DataSource begin
 
 	@Autowired
-//	@Qualifier("dataSource")
 	private DataSource dataSource;
 
 	@Autowired
 	private RedisConnectionFactory redisConnectionFactory;
+	
+	@Autowired
+	private ClientDetailsService clientDetailsService;
 
 	@Bean
 	public TokenStore tokenStore() {
 		return new RedisTokenStore(redisConnectionFactory);
 	}
 
-	@Bean("jdbcClientDetailsService")
-	public ClientDetailsService clientDetailsService() {
-		return new JdbcClientDetailsService(dataSource);
-	}
+//	@Bean("jdbcClientDetailsService")
+//	public ClientDetailsService clientDetailsService() {
+//		return new JdbcClientDetailsService(dataSource);
+//	}
 
 	@Bean
 	public AuthorizationCodeServices authorizationCodeServices() {
@@ -100,7 +102,8 @@ public class SsoAuthorizationServerConfigurer extends AuthorizationServerConfigu
 
 	@Bean
 	public UserApprovalHandler userApprovalHandler() {
-		ClientDetailsService clientDetailsService = clientDetailsService();
+		Assert.notNull(clientDetailsService, "ClientDetailsService cannot be empty !");
+//		ClientDetailsService clientDetailsService = clientDetailsService();
 		TokenStoreUserApprovalHandler userApprovalHandler = new TokenStoreUserApprovalHandler();
 		userApprovalHandler.setTokenStore(tokenStore());
 		userApprovalHandler.setRequestFactory(new DefaultOAuth2RequestFactory(clientDetailsService));
@@ -115,7 +118,8 @@ public class SsoAuthorizationServerConfigurer extends AuthorizationServerConfigu
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.withClientDetails(clientDetailsService());
+		clients.jdbc(dataSource);
+//		clients.withClientDetails(clientDetailsService());
 //		clients.inMemory().withClient("my-trusted-client")// 客户端ID
 //				.authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
 //				.authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT").scopes("read", "write", "trust")// 授权用户的操作权限

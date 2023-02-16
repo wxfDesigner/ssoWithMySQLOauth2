@@ -17,6 +17,7 @@
 		<workspace.root>${project.basedir}/../../</workspace.root>
 	</properties>
 	<dependencies>
+		<!-- project begin -->
 		<dependency>
 			<groupId>com.tdh.gps.console</groupId>
 			<artifactId>console-model</artifactId>
@@ -40,10 +41,15 @@
 			<artifactId>console-utils</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.tdh.gps.console</groupId>
+			<artifactId>console-common</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.tdh.urlInterceptor</groupId>
 			<artifactId>dubbo-spring-boot-starter</artifactId>
 		</dependency>
-		<!-- springboot -->
+		<!-- project end -->
+		<!-- springboot begin -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-velocity</artifactId>
@@ -52,7 +58,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
-		<!-- SpringSecurity -->
+		<!-- springboot end -->
+		<!-- SpringSecurity begin -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-jwt</artifactId>
@@ -65,13 +72,8 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-oauth2</artifactId>
 		</dependency>
-		<!-- junit -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!-- dubbo -->
+		<!-- SpringSecurity end -->
+		<!-- dubbo begin -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
@@ -100,16 +102,8 @@
 				</exclusion>
 			</exclusions> -->
 		</dependency>
-		<!-- spring -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-		</dependency>
-		<!-- mysql -->
+		<!-- dubbo end -->
+		<!-- mysql begin -->
 		<dependency>
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
@@ -119,11 +113,13 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
-		<!-- redis -->
+		<!-- mysql end -->
+		<!-- redis begin -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-redis</artifactId>
 		</dependency>
+		<!-- redis end -->
 	</dependencies>
 	<build>
 		<finalName>console-authentication</finalName>

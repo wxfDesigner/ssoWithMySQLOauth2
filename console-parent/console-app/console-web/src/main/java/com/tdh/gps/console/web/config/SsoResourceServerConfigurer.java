@@ -11,8 +11,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.authentication.TokenExtractor;
 import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
-import org.springframework.security.oauth2.provider.token.AccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -96,9 +94,9 @@ public class SsoResourceServerConfigurer extends ResourceServerConfigurerAdapter
 
 	}
 
-	@Bean
-	public AccessTokenConverter accessTokenConverter() {
-		return new DefaultAccessTokenConverter();
-	}
+//	@Bean
+//	public AccessTokenConverter accessTokenConverter() {
+//		return new DefaultAccessTokenConverter();
+//	}
 
 }

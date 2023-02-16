@@ -13,14 +13,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
   <modules>
   	<module>console-service-impl</module>
   	<module>console-dao-impl</module>
@@ -28,5 +20,7 @@
   	<module>console-model</module>
     <module>console-utils</module>
     <module>console-config</module>
+    <module>console-common</module>
+    <module>console-resource</module>
   </modules>
 </project>

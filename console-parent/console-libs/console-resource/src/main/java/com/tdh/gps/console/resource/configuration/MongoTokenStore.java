@@ -1,4 +1,4 @@
-package com.tdh.gps.console.web.config;
+package com.tdh.gps.console.resource.configuration;
 
 import java.util.ArrayList;
 import java.util.Collection;

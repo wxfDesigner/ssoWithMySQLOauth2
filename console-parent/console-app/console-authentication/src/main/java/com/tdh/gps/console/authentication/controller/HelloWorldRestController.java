@@ -19,6 +19,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.tdh.gps.console.model.Users;
 import com.tdh.gps.console.service.api.UserInfoService;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 /**
  * 
  * @ClassName: HelloWorldRestController  
@@ -27,6 +30,7 @@ import com.tdh.gps.console.service.api.UserInfoService;
  * @date 2018年12月4日 下午3:56:42  
  *
  */
+@Api(tags = {"用户信息控制层Api"})
 @RestController
 public class HelloWorldRestController {
  
@@ -35,6 +39,7 @@ public class HelloWorldRestController {
  
      
     //-------------------Retrieve All Users--------------------------------------------------------
+    @ApiOperation("用户信息控制层Api->显示用户列表信息")
     @PreAuthorize("hasRole('USER')")
     @RequestMapping(value = "/userList/", method = RequestMethod.POST)
     public ResponseEntity<List<Users>> listAllUsers() {
@@ -47,7 +52,7 @@ public class HelloWorldRestController {
  
  
     //-------------------Retrieve Single User--------------------------------------------------------
-     
+    @ApiOperation("用户信息控制层Api->根据id查询用户信息") 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Users> getUser(@PathVariable("id") long id) {
         System.out.println("Fetching User with id " + id);
@@ -62,7 +67,7 @@ public class HelloWorldRestController {
      
      
     //-------------------Create a User--------------------------------------------------------
-     
+    @ApiOperation("用户信息控制层Api->新增用户信息") 
     @RequestMapping(value = "/user/", method = RequestMethod.POST)
     public ResponseEntity<Void> createUser(@RequestBody Users user, UriComponentsBuilder ucBuilder) {
         System.out.println("Creating User " + user.getName());
@@ -81,7 +86,7 @@ public class HelloWorldRestController {
  
      
     //------------------- Update a User --------------------------------------------------------
-     
+    @ApiOperation("用户信息控制层Api->修改用户信息") 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Users> updateUser(@PathVariable("id") long id, @RequestBody Users user) {
         System.out.println("Updating User " + id);
@@ -102,7 +107,7 @@ public class HelloWorldRestController {
     }
  
     //------------------- Delete a User --------------------------------------------------------
-     
+    @ApiOperation("用户信息控制层Api->根据id删除用户信息") 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Users> deleteUser(@PathVariable("id") long id) {
         System.out.println("Fetching & Deleting User with id " + id);
@@ -119,7 +124,7 @@ public class HelloWorldRestController {
  
      
     //------------------- Delete All Users --------------------------------------------------------
-     
+    @ApiOperation("用户信息控制层Api->删除所有用户信息") 
     @RequestMapping(value = "/user/", method = RequestMethod.DELETE)
     public ResponseEntity<Users> deleteAllUsers() {
         System.out.println("Deleting All Users");

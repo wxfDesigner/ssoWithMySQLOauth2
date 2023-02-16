@@ -29,17 +29,17 @@
 		<springboot.version>2.3.12.RELEASE</springboot.version>
 		<!-- springboot end -->
 		
-		<!-- alibabacloud begin -->
-		<!-- <alibabacloud.version>1.5.1.RELEASE</alibabacloud.version> -->
-		<!-- <alibabacloud.version>2.1.2.RELEASE</alibabacloud.version> -->
-		<alibabacloud.version>2.2.7.RELEASE</alibabacloud.version>
-		<!-- alibabacloud end -->
+		<!-- alibabaCloud begin -->
+		<!-- <alibabaCloud.version>1.5.1.RELEASE</alibabaCloud.version> -->
+		<!-- <alibabaCloud.version>2.1.2.RELEASE</alibabaCloud.version> -->
+		<alibabaCloud.version>2.2.7.RELEASE</alibabaCloud.version>
+		<!-- alibabaCloud end -->
 		
-		<!-- springcloud begin -->
-		<!-- <springcloud.version>Brixton.SR5</springcloud.version> source-->
-		<!-- <springcloud.version>Greenwich.SR1</springcloud.version> -->
-		<springcloud.version>Hoxton.SR12</springcloud.version>
-		<!-- springcloud end -->
+		<!-- springCloud begin -->
+		<!-- <springCloud.version>Brixton.SR5</springCloud.version> source-->
+		<!-- <springCloud.version>Greenwich.SR1</springCloud.version> -->
+		<springCloud.version>Hoxton.SR12</springCloud.version>
+		<!-- springCloud end -->
 		
 		<spring-security-oauth2.version>2.3.4.RELEASE</spring-security-oauth2.version>
 		<dubbo.version>2.5.3</dubbo.version>
@@ -72,6 +72,7 @@
 		<logback.version>1.1.11</logback.version>
 		<spring.security.version>4.0.4.RELEASE</spring.security.version>
 		<spring.security.oauth.version>2.0.14.RELEASE</spring.security.oauth.version> 
+		<swagger.version>2.9.2</swagger.version>
 	</properties>
 
 	<distributionManagement>
@@ -186,6 +187,16 @@
 				<version>${console.project.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>com.tdh.gps.console</groupId>
+				<artifactId>console-common</artifactId>
+				<version>${console.project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.tdh.gps.console</groupId>
+				<artifactId>console-resource</artifactId>
+				<version>${console.project.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>com.tdh.urlInterceptor</groupId>
 				<artifactId>mongodb-spring-boot-starter</artifactId>
 				<version>${console.project.version}</version>
@@ -195,6 +206,7 @@
 				<artifactId>dubbo-spring-boot-starter</artifactId>
 				<version>${console.project.version}</version>
 			</dependency>
+			
 			<!-- project end -->
 			
 			<!-- spring begin -->
@@ -238,11 +250,11 @@
 			</dependency>
 			<!-- springboot end -->
 
-			<!-- springcloud begin -->
+			<!-- springCloud begin -->
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${springcloud.version}</version>
+				<version>${springCloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -261,7 +273,7 @@
 				<artifactId>spring-cloud-starter-feign</artifactId>
 				<version>${spring.cloud.version}</version>
 			</dependency>
-			<!-- springcloud end -->
+			<!-- springCloud end -->
 			
 			<!-- spring-security-oauth2 begin -->
 			<dependency>
@@ -271,15 +283,15 @@
 			</dependency>
 			<!-- spring-security-oauth2 end -->
 			
-			<!-- alibabacloud begin -->
+			<!-- alibabaCloud begin -->
 			<dependency>
 			  <groupId>com.alibaba.cloud</groupId>
 			  <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-			  <version>${alibabacloud.version}</version>
+			  <version>${alibabaCloud.version}</version>
 			  <type>pom</type>
 			  <scope>import</scope>
 			</dependency>
-			<!-- alibabacloud end -->
+			<!-- alibabaCloud end -->
 			
 			<!-- redis begin -->
 			<!-- <dependency>
@@ -419,6 +431,18 @@
 				<scope>test</scope>
 			</dependency>
 			<!-- junit end -->
+			<!-- swagger begin -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-swagger2</artifactId>
+			    <version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-swagger-ui</artifactId>
+			    <version>${swagger.version}</version>
+			</dependency>
+			<!-- swagger end -->
 		</dependencies>
 	</dependencyManagement>
 	<build>

@@ -1,0 +1,28 @@
+{
+  "groups": [],
+  "hints": [],
+  "properties": [
+    {
+      "name": "muser.name",
+      "type": "java.lang.String",
+      "description": "username"
+    },
+    {
+      "name": "muser.password",
+      "type": "java.lang.String",
+      "description": "password"
+    },
+    {
+      "name": "muser.host",
+      "type": "java.lang.String",
+      "defaultValue": "localhost",
+      "description": "hostname"
+    },
+    {
+      "name": "muser.port",
+      "type": "java.lang.Integer",
+      "defaultValue": "8080",
+      "description": "port"
+    }
+  ]
+}

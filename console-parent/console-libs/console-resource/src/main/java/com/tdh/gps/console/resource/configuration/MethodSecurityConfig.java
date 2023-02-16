@@ -1,4 +1,4 @@
-package com.tdh.gps.console.web.config;
+package com.tdh.gps.console.resource.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;

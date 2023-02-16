@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 import com.tdh.gps.console.dto.UserOverviewDto;
 import com.tdh.gps.console.model.OauthClientDetails;
 import com.tdh.gps.console.model.User;
-import com.tdh.gps.console.web.config.BeanInitConfig;
+import com.tdh.gps.console.resource.configuration.BeanInitConfig;
 
 @SpringBootTest(classes = Application.class)
 @RunWith(SpringRunner.class)

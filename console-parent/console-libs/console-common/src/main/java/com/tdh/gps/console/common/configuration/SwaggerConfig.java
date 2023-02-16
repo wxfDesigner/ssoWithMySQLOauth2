@@ -41,7 +41,8 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.tdh.gps.console"))
+//                .apis(RequestHandlerSelectors.basePackage("com.tdh.gps.console"))
+                .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build().globalOperationParameters(setHeaderToken());
     }

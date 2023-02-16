@@ -18,5 +18,6 @@
   	<module>console-server</module>
     <module>console-register</module>
     <module>console-authentication</module>
+    <module>console-zuul</module>
   </modules>
 </project>

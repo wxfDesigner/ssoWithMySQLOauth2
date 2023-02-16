@@ -1,10 +1,11 @@
 package com.tdh.gps.console.authentication;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
@@ -14,15 +15,17 @@ import org.springframework.context.annotation.ComponentScan;
  * @date 2018年12月6日 上午10:13:27
  *
  */
+@Slf4j
+@EnableDiscoveryClient
 @SpringBootApplication
 //@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class, MongoAutoConfiguration.class })
 @ComponentScan(basePackages = { "com.tdh.gps.console.*" })
 public class Application {
-	static Logger logger = LoggerFactory.getLogger(Application.class);
+//	static Logger logger = LoggerFactory.getLogger(Application.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
-		logger.info("console authentication started successfully");
+		log.info("console authentication started successfully");
 	}
 
 }

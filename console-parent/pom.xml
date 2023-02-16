@@ -72,7 +72,12 @@
 		<logback.version>1.1.11</logback.version>
 		<spring.security.version>4.0.4.RELEASE</spring.security.version>
 		<spring.security.oauth.version>2.0.14.RELEASE</spring.security.oauth.version> 
-		<swagger.version>2.9.2</swagger.version>
+		<!-- common begin -->
+		<!-- <swagger.version>2.9.2</swagger.version> -->
+		<swagger.version>3.0.0</swagger.version>
+		<fastjson.version>2.0.23</fastjson.version> 
+		<commons-lang.version>2.6</commons-lang.version>
+		<!-- common end -->
 	</properties>
 
 	<distributionManagement>
@@ -414,7 +419,7 @@
 			<dependency>
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>
-				<version>2.6</version>
+				<version>${commons-lang.version}</version>
 			</dependency>
 			<!-- json -->
 			<dependency>
@@ -422,14 +427,20 @@
 				<artifactId>gson</artifactId>
 				<version>${gson.version}</version>
 			</dependency>
+			<!-- fastjson -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
 			<!-- common end -->
 			<!-- junit begin -->
-			<dependency>
+			<!-- <dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
 				<scope>test</scope>
-			</dependency>
+			</dependency> -->
 			<!-- junit end -->
 			<!-- swagger begin -->
 			<dependency>

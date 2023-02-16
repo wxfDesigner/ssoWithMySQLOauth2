@@ -1,0 +1,135 @@
+server:
+  port: 8888
+#  connection-timeout: 5000
+#  session:
+#    timeout: 30
+  servlet:
+    session:
+      timeout: 30
+#  tomcat:
+#    max-connections: 500
+#    max-threads: 500
+#    min-spare-threads: 10
+#    uri-encoding: UTF-8
+  undertow:
+    threads:
+      io: 4
+      worker: 500
+    buffer-size: 1024
+    direct-buffers: true
+    
+    
+spring: 
+  profiles:
+    active: dev
+    #includ中,nacos的配置文件对应 starex-mysql, starex-swagger2
+    include: 
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: console-zuul
+  cloud:
+    nacos:
+      discovery: 
+        # 服务注册地址
+        server-addr: localhost:8848
+        # 注册命名空间
+        namespace: ad67d78d-1978-45c5-9c1b-1acba7229190
+        metadata: 
+          preserved.heart.beat.interval: 3000
+          preserved.heart.beat.timeout: 6000
+          preserved.ip.delete.timeout: 6000
+      config:
+        # 配置中心地址
+        server-addr: localhost:8848
+        # 服务命名空间
+        namespace: ad67d78d-1978-45c5-9c1b-1acba7229190
+        # 配置文件格式
+        file-extension: yaml
+        prefix: console
+    loadbalancer:
+      retry:
+        enabled: true
+  zipkin:
+    base-url: http://localhost:9000
+    sender:
+     type: kafka
+    kafka:
+     topic: zipkin
+  sleuth:
+#    web:
+#      client:
+#        enabled: true
+    sampler:
+      probability: 1.0
+#      percentage: 
+# kafka configuration
+  kafka:
+   bootstrap-servers: 127.0.0.1:9092
+#    stream:
+#      kafka:
+#        binder:
+#          brokers: 127.0.0.1:9092  #ip地址根据实际kafka集群地址
+#          zkNodes: 127.0.0.1:2181
+      
+zuul:
+ routes:
+    provider:
+     path: /provider/**
+     serviceId: urlInterceptor-provider
+    consumer:
+     path: /consumer/**
+     serviceId: urlInterceptor-consumer
+ retryable: true
+ ribbon-isolation-strategy: THREAD
+ host:
+  max-total-connections: 500
+  max-per-route-connections: 50
+#  connect-timeout-millis: 5000
+#  socket-timeout-millis: 10000
+#当zuul隔离策略为（ribbon-isolation-strategy）为“SEMAPHORE”时使用
+# semaphore:
+#    max-semaphores: 500
+      
+ribbon:
+# 设置连接超时时间
+ ConnectTimeout: 5000
+# 设置读取超时时间
+ ReadTimeout: 10000
+# 对所有操作请求都进行重试
+ OkToRetryOnAllOperations: true
+# 切换实例的重试次数
+ MaxAutoRetriesNextServer: 2
+# 对当前实例的重试次数
+ MaxAutoRetries: 1
+ 
+# 设置熔断超时时间
+hystrix:
+ command:
+  default:
+   execution:
+    isolation:
+     thread:
+      timeoutInMilliseconds: 10000
+# 开启熔断功能
+    timeout:
+     enabled: true
+ threadpool:
+  default:
+   coreSize: 10
+   maximumSize: 20
+   allowMaximumSizeToDivergeFromCoreSize: true
+   maxQueueSize: -1
+   
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS  
+   
+# swagger configuration
+swagger:
+  base-package: com.tdh.gps.console

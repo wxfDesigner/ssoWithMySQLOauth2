@@ -15,16 +15,32 @@
     <workspace.root>${project.basedir}/../../</workspace.root>
   </properties>
   <dependencies>
-  	
+	<!-- nacos begin -->
+	<dependency>
+		<groupId>com.alibaba.cloud</groupId>
+		<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.alibaba.cloud</groupId>
+		<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+	</dependency>
+	<!-- nacos end -->
 	<!-- common begin -->
 	<dependency>
 		<groupId>junit</groupId>
 		<artifactId>junit</artifactId>
-		<scope>test</scope>
 	</dependency>
 	<dependency>
 		<groupId>com.google.code.gson</groupId>
 		<artifactId>gson</artifactId>
+	</dependency>
+	<dependency>
+	  <groupId>org.projectlombok</groupId>
+	  <artifactId>lombok</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>fastjson</artifactId>
 	</dependency>
 	<!-- common end -->
 	<!-- swagger begin -->

@@ -97,3 +97,7 @@ spring:
 logging:
   level:
     root: info
+    
+# swagger configuration
+swagger:
+  base-package: com.tdh.gps.console

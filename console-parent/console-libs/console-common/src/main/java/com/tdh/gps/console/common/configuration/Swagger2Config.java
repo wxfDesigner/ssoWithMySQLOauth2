@@ -23,9 +23,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author wangxf
  *
  */
-@Configuration
-@EnableSwagger2
-public class SwaggerConfig {
+//@Configuration
+//@EnableSwagger2
+public class Swagger2Config {
 	
 	@Value("${spring.application.name}")
 	private String applicationName;

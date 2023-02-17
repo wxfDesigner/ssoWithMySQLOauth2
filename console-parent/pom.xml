@@ -443,7 +443,8 @@
 			</dependency> -->
 			<!-- junit end -->
 			<!-- swagger begin -->
-			<dependency>
+			<!-- swagger2 -->
+			<!-- <dependency>
 			    <groupId>io.springfox</groupId>
 			    <artifactId>springfox-swagger2</artifactId>
 			    <version>${swagger.version}</version>
@@ -451,6 +452,12 @@
 			<dependency>
 			    <groupId>io.springfox</groupId>
 			    <artifactId>springfox-swagger-ui</artifactId>
+			    <version>${swagger.version}</version>
+			</dependency> -->
+			<!-- swagger3 -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-boot-starter</artifactId>
 			    <version>${swagger.version}</version>
 			</dependency>
 			<!-- swagger end -->

@@ -6,6 +6,8 @@ import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.tdh.gps.console.zuul.utils.NewZuulRouteLocator;
+
 @Configuration
 public class NewZuulConfig {
 

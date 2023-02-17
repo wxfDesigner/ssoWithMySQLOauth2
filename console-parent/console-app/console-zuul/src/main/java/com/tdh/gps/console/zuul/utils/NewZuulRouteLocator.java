@@ -1,4 +1,4 @@
-package com.tdh.gps.console.zuul.configuration;
+package com.tdh.gps.console.zuul.utils;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

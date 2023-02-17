@@ -44,13 +44,19 @@
 	</dependency>
 	<!-- common end -->
 	<!-- swagger begin -->
-	<dependency>
+	<!-- swagger2 -->
+	<!-- <dependency>
 		<groupId>io.springfox</groupId>
 		<artifactId>springfox-swagger2</artifactId>
 	</dependency>
 	<dependency>
 		<groupId>io.springfox</groupId>
 		<artifactId>springfox-swagger-ui</artifactId>
+	</dependency> -->
+	<!-- swagger3 -->
+	<dependency>
+		<groupId>io.springfox</groupId>
+		<artifactId>springfox-boot-starter</artifactId>
 	</dependency>
 	<!-- swagger end -->
   </dependencies>

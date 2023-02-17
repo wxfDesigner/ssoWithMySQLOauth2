@@ -21,8 +21,8 @@ class SwaggerApiDocConfiguration implements SwaggerResourcesProvider {
 	@Override
 	public List<SwaggerResource> get() {
 		List<SwaggerResource> resources = new ArrayList<SwaggerResource>();
-		resources.add(swaggerResource("console-web", "/console-web/v2/api-docs", "2.0"));
-		resources.add(swaggerResource("console-authentication", "/console-authentication/v2/api-docs", "2.0"));
+		resources.add(swaggerResource("console-web", "/console-web/v3/api-docs", "3.0"));
+		resources.add(swaggerResource("console-authentication", "/console-authentication/v3/api-docs", "3.0"));
 		return resources;
 	}
 

@@ -23,7 +23,7 @@ import com.tdh.gps.console.service.api.UserInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(tags = {"用户信息控制层Api"})
+@Api(tags = {"HelloWorldRestController"},description = "用户信息控制层Api")
 @RestController
 public class HelloWorldRestController {
  

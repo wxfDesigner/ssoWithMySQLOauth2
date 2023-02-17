@@ -20,6 +20,10 @@
 		<groupId>com.tdh.gps.console</groupId>
 		<artifactId>console-common</artifactId>
 	</dependency>
+	<dependency>
+		<groupId>com.tdh.gps.console</groupId>
+		<artifactId>console-resource</artifactId>
+	</dependency>
 	<!-- project end -->
 	<!-- zuul begin -->
 	<dependency>
@@ -33,5 +37,19 @@
 		<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
 	</dependency>
 	<!-- nacos end -->
+	<!-- SpringSecurity begin -->
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-jwt</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-security</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-oauth2</artifactId>
+	</dependency>
+	<!-- SpringSecurity end -->
   </dependencies>
 </project>

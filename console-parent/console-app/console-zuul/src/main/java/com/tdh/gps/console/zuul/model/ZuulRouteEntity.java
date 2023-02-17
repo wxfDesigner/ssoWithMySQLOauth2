@@ -1,4 +1,4 @@
-package com.tdh.gps.console.zuul.configuration;
+package com.tdh.gps.console.zuul.model;
 
 public class ZuulRouteEntity {
 	/**

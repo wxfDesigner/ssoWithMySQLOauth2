@@ -1,4 +1,4 @@
-package com.tdh.gps.console.zuul.configuration;
+package com.tdh.gps.console.zuul.utils;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -17,6 +17,7 @@ import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.PropertyKeyConst;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.exception.NacosException;
+import com.tdh.gps.console.zuul.model.ZuulRouteEntity;
 
 import lombok.extern.slf4j.Slf4j;
 

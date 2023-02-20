@@ -24,6 +24,10 @@
   		<groupId>com.tdh.gps.console</groupId>
   		<artifactId>console-service-api</artifactId>
   	</dependency>
+  	<dependency>
+  		<groupId>com.tdh.gps.console</groupId>
+    	<artifactId>console-common</artifactId>
+  	</dependency>
   	<!-- project end -->
 	<!-- security begin -->
 	<dependency>
@@ -49,6 +53,12 @@
 		</exclusions>
 	</dependency>
 	<!-- dubbo end -->
+	<!-- redis begin -->
+	<dependency>
+		<groupId>org.springframework.data</groupId>
+		<artifactId>spring-data-redis</artifactId>
+	</dependency>
+	<!-- redis end -->
 	<dependency>
 		<groupId>junit</groupId>
 		<artifactId>junit</artifactId>

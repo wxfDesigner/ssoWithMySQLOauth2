@@ -35,10 +35,12 @@ public class CustomTokenExtractor extends BearerTokenExtractor {
 			if (null == token) {
 				logger.debug("Token not found in request parameters. Trying request cookies.");
 				Cookie[] cookies = request.getCookies();
-				for (Cookie cookie : cookies) {
-					if (OAuth2AccessToken.ACCESS_TOKEN.equals(cookie.getName())) {
-						token = cookie.getValue();
-						break;
+				if (null != cookies) {
+					for (Cookie cookie : cookies) {
+						if (OAuth2AccessToken.ACCESS_TOKEN.equals(cookie.getName())) {
+							token = cookie.getValue();
+							break;
+						}
 					}
 				}
 				if (null == token) {

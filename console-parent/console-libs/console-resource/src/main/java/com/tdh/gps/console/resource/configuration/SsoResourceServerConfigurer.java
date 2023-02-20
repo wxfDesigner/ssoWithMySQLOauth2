@@ -1,7 +1,8 @@
-package com.tdh.gps.console.web.configuration;
+package com.tdh.gps.console.resource.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -17,6 +18,8 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
+import com.tdh.gps.console.common.constants.ResourceServerConstants;
+
 /**
  * 
  * @ClassName: SsoWebSecurityConfigurer
@@ -29,23 +32,24 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 @EnableResourceServer
 public class SsoResourceServerConfigurer extends ResourceServerConfigurerAdapter {
 
-	private static final String RESOURCE_ID = "console_web_rest_api";
+	@Value("${spring.application.name}")
+	private String resourceId;
 //	@Value("${security.oauth2.client.clientId}")
 //	private String clientId;
 //	@Value("${security.oauth2.client.clientSecret}")
 //	private String clientSecret;
 //	@Value("${security.oauth2.authorization.check-token-access}")
 //	private String checkTokenEndpointUrl;
-	
+
 //	MongoDB DataSource begin
-	
+
 //	@Autowired
 //	private TokenStore tokenStore;
-	
+
 //	MongoDB DataSource end
-	
+
 //	Redis DataSource begin
-	
+
 	@Autowired
 	private RedisConnectionFactory redisConnectionFactory;
 
@@ -53,9 +57,9 @@ public class SsoResourceServerConfigurer extends ResourceServerConfigurerAdapter
 	public TokenStore tokenStore() {
 		return new RedisTokenStore(redisConnectionFactory);
 	}
-	
+
 //  Redis DataSource end
-	
+
 	@Autowired(required = false)
 	private JwtAccessTokenConverter jwtAccessTokenConverter;
 	@Autowired
@@ -64,15 +68,23 @@ public class SsoResourceServerConfigurer extends ResourceServerConfigurerAdapter
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) {
-		resources.resourceId(RESOURCE_ID).stateless(false).tokenServices(tokenServices()).tokenStore(tokenStore())
+		resources.resourceId(resourceId+ResourceServerConstants.RESOURCE_ID_SUFFIX).stateless(false).tokenServices(tokenServices()).tokenStore(tokenStore())
 				.tokenExtractor(tokenExtractor);
 	}
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.anonymous().disable().requestMatchers().antMatchers("/console*/**").and().authorizeRequests()
-				.antMatchers("/console*/**").permitAll().and().exceptionHandling()
-				.accessDeniedHandler(new OAuth2AccessDeniedHandler());
+		http.authorizeRequests().antMatchers(
+				"/swagger-resources/**" //swagger需要的静态资源路径
+                ,"/**/v3/**"
+                ,"/swagger-ui/**"
+                ,"/**/oauth/token").permitAll()
+				.and().authorizeRequests().anyRequest().authenticated()
+				.and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler())
+				.and().csrf().disable();// 关闭csrf
+//		http.anonymous().disable().requestMatchers().antMatchers("/console*/**").and().authorizeRequests()
+//		.antMatchers("/console*/**").permitAll().and().exceptionHandling()
+//		.accessDeniedHandler(new OAuth2AccessDeniedHandler());
 	}
 
 	@Bean

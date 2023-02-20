@@ -23,6 +23,12 @@
 	<dependency>
 		<groupId>com.tdh.gps.console</groupId>
 		<artifactId>console-resource</artifactId>
+		<exclusions>
+			<exclusion>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			</exclusion>
+		</exclusions>
 	</dependency>
 	<!-- project end -->
 	<!-- zuul begin -->
@@ -51,5 +57,11 @@
 		<artifactId>spring-cloud-starter-oauth2</artifactId>
 	</dependency>
 	<!-- SpringSecurity end -->
+	<!-- redis begin -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-redis</artifactId>
+	</dependency>
+	<!-- redis end -->
   </dependencies>
 </project>

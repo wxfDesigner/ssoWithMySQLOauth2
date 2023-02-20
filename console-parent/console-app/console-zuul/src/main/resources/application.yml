@@ -71,8 +71,18 @@ spring:
 #        binder:
 #          brokers: 127.0.0.1:9092  #ip地址根据实际kafka集群地址
 #          zkNodes: 127.0.0.1:2181
-      
+     
 zuul:
+ SendErrorFilter:
+   error:
+     disable: true
+ sensitive-headers:
+ ignored-headers:
+  - Access-Control-Allow-Credentials
+  - Access-Control-Allow-Origin
+  - Vary
+  - X-Frame-Options
+  - token
  routes:
     provider:
      path: /provider/**

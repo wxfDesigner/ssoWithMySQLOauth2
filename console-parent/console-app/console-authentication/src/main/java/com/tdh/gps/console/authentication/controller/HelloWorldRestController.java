@@ -30,7 +30,7 @@ import io.swagger.annotations.ApiOperation;
  * @date 2018年12月4日 下午3:56:42  
  *
  */
-@Api(tags = {"用户信息控制层Api"})
+@Api(tags = {"HelloWorldRestController"},description = "用户信息控制层Api")
 @RestController
 public class HelloWorldRestController {
  

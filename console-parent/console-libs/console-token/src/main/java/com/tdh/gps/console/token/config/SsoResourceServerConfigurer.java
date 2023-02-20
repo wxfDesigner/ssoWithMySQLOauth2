@@ -29,9 +29,17 @@ public class SsoResourceServerConfigurer extends ResourceServerConfigurerAdapter
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.anonymous().disable().requestMatchers().antMatchers("/user*/**").and().authorizeRequests()
-				.antMatchers("/user*/**").permitAll().and().exceptionHandling()
-				.accessDeniedHandler(new OAuth2AccessDeniedHandler());
+		http.authorizeRequests().antMatchers(
+				"/swagger-resources/**" //swagger需要的静态资源路径
+                ,"/**/v3/**"
+                ,"/swagger-ui/**"
+                ,"/**/oauth/token").permitAll()
+				.and().authorizeRequests().anyRequest().authenticated()
+				.and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler())
+				.and().csrf().disable();// 关闭csrf
+//		http.anonymous().disable().requestMatchers().antMatchers("/user*/**").and().authorizeRequests()
+//				.antMatchers("/user*/**").permitAll().and().exceptionHandling()
+//				.accessDeniedHandler(new OAuth2AccessDeniedHandler());
 	}
 
 }

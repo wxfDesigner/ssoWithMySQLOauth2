@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
 import org.springframework.security.oauth2.provider.approval.TokenApprovalStore;
+import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 
 /**
@@ -50,7 +51,15 @@ public class SsoWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.anonymous().disable().authorizeRequests().antMatchers("/oauth/token").permitAll();
+		http.authorizeRequests().antMatchers(
+				"/swagger-resources/**" //swagger需要的静态资源路径
+                ,"/**/v3/**"
+                ,"/swagger-ui/**"
+                ,"/**/oauth/token").permitAll()
+				.and().authorizeRequests().anyRequest().authenticated()
+				.and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler())
+				.and().csrf().disable();// 关闭csrf
+//		http.anonymous().disable().authorizeRequests().antMatchers("/oauth/token").permitAll();
 	}
 
 	@Override

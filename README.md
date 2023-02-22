@@ -15,7 +15,7 @@ Spring security oauth2 with mysql , your favorite sso frame , please execute sql
  Target Server Version : 80032
  File Encoding         : 65001
 
- Date: 14/02/2023 16:57:38
+ Date: 15/02/2023 20:49:44
 */
 
 SET NAMES utf8mb4;
@@ -102,7 +102,7 @@ CREATE TABLE `oauth_client_details`  (
 -- ----------------------------
 -- Records of oauth_client_details
 -- ----------------------------
-INSERT INTO `oauth_client_details` VALUES ('my-trusted-client', NULL, 'secret', 'read,write,trust', 'password,authorization_code,refresh_token,implicit', 'https://www.baidu.com/', 'ROLE_CLIENT,ROLE_TRUSTED_CLIENT', 1800, 3000, NULL, NULL);
+INSERT INTO `oauth_client_details` VALUES ('my-trusted-client', NULL, '$2a$10$xgQVz9Mv5PFcdSs6C/779uleQmDfny1Diw3yj2L2Be2RgnDXoO9IS', 'read,write,trust', 'password,authorization_code,refresh_token,implicit', 'https://www.baidu.com/', 'ROLE_CLIENT,ROLE_TRUSTED_CLIENT', 1800, 3000, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for oauth_client_token
@@ -189,7 +189,7 @@ CREATE TABLE `user_info`  (
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES (1, 'bob', 'abc123', 0, 0, '2023-02-08 19:51:30', NULL, '2023-02-08 19:51:44', NULL);
+INSERT INTO `user_info` VALUES (1, 'bob', '$2a$10$qzbVF5K.EtfxHCYiWS.8eOu/CeIXBdaWTAor1vAosHKeD1Dq7tXJy', 0, 0, '2023-02-08 19:51:30', NULL, '2023-02-15 16:12:21', NULL);
 
 -- ----------------------------
 -- Table structure for user_role_relation
@@ -214,4 +214,3 @@ CREATE TABLE `user_role_relation`  (
 INSERT INTO `user_role_relation` VALUES (1, 1, 1, NULL, 0, '2023-02-09 15:13:19', NULL, '2023-02-09 15:13:23', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
-

@@ -49,7 +49,7 @@ spring:
         prefix: console
     loadbalancer:
       retry:
-        enabled: true
+        enabled: false
   zipkin:
     base-url: http://localhost:9000
     sender:
@@ -83,14 +83,14 @@ zuul:
   - Vary
   - X-Frame-Options
   - token
- routes:
-    provider:
-     path: /provider/**
-     serviceId: urlInterceptor-provider
-    consumer:
-     path: /consumer/**
-     serviceId: urlInterceptor-consumer
- retryable: true
+# routes:
+#    provider:
+#     path: /provider/**
+#     serviceId: urlInterceptor-provider
+#    consumer:
+#     path: /consumer/**
+#     serviceId: urlInterceptor-consumer
+ retryable: false
  ribbon-isolation-strategy: THREAD
  host:
   max-total-connections: 500
@@ -103,11 +103,11 @@ zuul:
       
 ribbon:
 # 设置连接超时时间
- ConnectTimeout: 5000
+ ConnectTimeout: 2000
 # 设置读取超时时间
  ReadTimeout: 10000
-# 对所有操作请求都进行重试
- OkToRetryOnAllOperations: true
+# 是否对所有的请求方式都重试，只对get请求重试
+ OkToRetryOnAllOperations: false
 # 切换实例的重试次数
  MaxAutoRetriesNextServer: 2
 # 对当前实例的重试次数

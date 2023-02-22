@@ -15,8 +15,8 @@ import springfox.documentation.swagger.web.SwaggerResourcesProvider;
  * @author wangxf
  *
  */
-@Component
-@Primary
+//@Component
+//@Primary
 class SwaggerApiDocConfiguration implements SwaggerResourcesProvider {
 	@Override
 	public List<SwaggerResource> get() {

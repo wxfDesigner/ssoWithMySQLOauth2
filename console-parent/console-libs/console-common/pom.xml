@@ -58,6 +58,22 @@
 		<groupId>io.springfox</groupId>
 		<artifactId>springfox-boot-starter</artifactId>
 	</dependency>
+	<dependency>
+		<groupId>com.github.xiaoymin</groupId>
+		<artifactId>swagger-bootstrap-ui</artifactId>
+	</dependency>
 	<!-- swagger end -->
+	<!-- spring begin -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+	</dependency>
+	<!-- spring end -->
+	<!-- tomcat begin -->
+	<dependency>
+		<groupId>org.apache.tomcat.embed</groupId>
+  		<artifactId>tomcat-embed-core</artifactId>
+	</dependency>
+	<!-- tomcat end -->
   </dependencies>
 </project>

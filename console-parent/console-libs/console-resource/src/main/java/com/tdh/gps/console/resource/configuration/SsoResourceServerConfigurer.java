@@ -85,7 +85,9 @@ public class SsoResourceServerConfigurer extends ResourceServerConfigurerAdapter
 				"/swagger-resources/**" //swagger需要的静态资源路径
                 ,"/**/v3/**"
                 ,"/swagger-ui/**"
-                ,"/**/oauth/token").permitAll()
+                ,"/**/oauth/token"
+                ,"/doc.html"
+                ,"/webjars/**").permitAll()
 				.and().authorizeRequests().anyRequest().authenticated()
 				.and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler())
 				.and().csrf().disable();// 关闭csrf

@@ -32,7 +32,7 @@ public class CustomFilterSecurityMetadataSource implements FilterInvocationSecur
         configs.add(config);
         map.put(matcher,configs);
 
-        AntPathRequestMatcher matcher2 = new AntPathRequestMatcher("/**");
+        AntPathRequestMatcher matcher2 = new AntPathRequestMatcher("/");
         SecurityConfig config2 = new SecurityConfig("ROLE_ADMIN");
         ArrayList<ConfigAttribute> configs2 = new ArrayList<>();
         configs2.add(config2);

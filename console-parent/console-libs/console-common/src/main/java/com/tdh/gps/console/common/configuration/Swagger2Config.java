@@ -13,6 +13,7 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -56,9 +57,10 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("SpringCloud 中使用Swagger2构建RESTful APIs")
                 .description(applicationName+"应用服务")
-                .termsOfServiceUrl("https://www.baidu.com")
+                .termsOfServiceUrl("https://github.com/wxfDesigner/")
                 .license("证书")//证书
-                .licenseUrl("https://www.baidu.com")//证书地址
+                .licenseUrl("https://github.com/wxfDesigner/")//证书地址
+                .contact(new Contact("人笑我我笑人生","https://github.com/wxfDesigner/","15821434334@163.com"))
                 .version("1.0")
                 .build();
     }

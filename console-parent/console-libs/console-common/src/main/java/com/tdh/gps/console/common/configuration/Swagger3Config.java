@@ -14,6 +14,7 @@ import springfox.documentation.builders.RequestParameterBuilder;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.schema.ScalarType;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.service.ParameterType;
 import springfox.documentation.service.RequestParameter;
 import springfox.documentation.spi.DocumentationType;
@@ -68,8 +69,9 @@ public class Swagger3Config {
 	 */
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title(applicationName + "应用服务").description("SpringCloud 中使用Swagger3构建RESTful APIs")
-				.termsOfServiceUrl("https://www.baidu.com").license("证书")// 证书
-				.licenseUrl("https://www.baidu.com")// 证书地址
+				.termsOfServiceUrl("https://github.com/wxfDesigner/").license("证书")// 证书
+				.licenseUrl("https://github.com/wxfDesigner/")// 证书地址
+				.contact(new Contact("人笑我我笑人生","https://github.com/wxfDesigner/","15821434334@163.com"))
 				.version("1.0").build();
 	}
 

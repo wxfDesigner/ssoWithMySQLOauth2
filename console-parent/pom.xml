@@ -84,11 +84,11 @@
 	<distributionManagement>
 		<repository>
 			<id>releases</id>
-			<url>http://docker-nexus:8081/nexus/content/repositories/releases</url>
+			<url>http://192.168.110.2:8081/repository/maven-releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
-			<url>http://docker-nexus:8081/nexus/content/repositories/snapshots/</url>
+			<url>http://192.168.110.2:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
@@ -96,7 +96,7 @@
 		<repository>
 			<id>public</id>
 			<name>nexus-repository</name>
-			<url>http://docker-nexus:8081/repository/Sing-Group/</url>
+			<url>http://192.168.110.2:8081/repository/maven-public/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -104,7 +104,7 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
-		<!-- <repository> <id>release</id> <name>nexus-repository</name> <url>http://docker-nexus:8081/nexus/content/repositories/releases</url> 
+		<!-- <repository> <id>release</id> <name>nexus-repository</name> <url>http://192.168.110.2:8081/repository/maven-releases/</url> 
 			<releases> <enabled>true</enabled> </releases> <snapshots> <enabled>true</enabled> 
 			</snapshots> </repository> -->
 		<repository>
@@ -124,7 +124,7 @@
 		<pluginRepository>
 			<id>nexus</id>
 			<name>nexus-repository</name>
-			<url>http://docker-nexus:8081/repository/Sing-Group/</url>
+			<url>http://192.168.110.2:8081/repository/maven-public/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
